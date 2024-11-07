@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>APOD History</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Find a Past Astronomy Picture of the Day</h1>
+    </header>
+
+    <main>
+        <section class="date-form">
+            <form action="{{ url_for('history') }}" method="get">
+                <label for="date">Select a date:</label>
+                <input type="date" id="date" name="date" min="1995-06-16" max="{{ today_date }}" required>
+                <button type="submit">Show APOD</button>
+                <p>Please enter a date between June 16, 1995, and today.</p>
+            </form>
+        </section>
+
+        {% if error_message %}
+        <section class="error">
+            <p style="color: red;"><strong>Error:</strong> {{ error_message }}</p>
+        </section>
+        {% elif image_url %}
+        <section class="apod-display">
+            <h2>{{ title }}</h2>
+            <h2>{{ selected_date }}</h2>
+            <img src="{{ image_url }}" alt="Astronomy Picture of the Day" width="600">
+            <p>{{ description }}</p>
+            {% if copyright %}
+            <p><strong>Copyright:</strong> {{ copyright }}</p>
+            {% else %}
+            <p><strong>Copyright:</strong> N/A</p>
+            {% endif %}
+            <p>
+                Want to view an enlarged version via NASA's Website? 
+                <a href="{{ image_url }}" target="_blank">Click Here</a>
+            </p>
+        </section>
+        {% endif %}
+    </main>
+
+    <footer>
+        <a href="{{ url_for('home') }}">Back to Today’s Image</a>
+    </footer>
+</body>
+</html>
