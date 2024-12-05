@@ -1,0 +1,15 @@
+Reflection Part Assignment 2
+
+Rewriting the object-oriented version of this program from a functional perspective 
+required me to rethink how each piece handled the data and how various variable were 
+affected. While writing assignment one, I focused on grouping related data and 
+functionality into classes that handled similar things. When writing the functional 
+version in assignment two, I focused on breaking the program into smaller independent 
+functions that passed data between them. When doing this, I ensured to use immutable 
+variables and encapsulation and confined the input and output operations to the main 
+piece of the program to "quarintine" necessary side effects of the program as a whole. 
+Writing with a functional approach was more difficult in my opinion, trying to ensure 
+there were no side effects and that each function conformed to the definition of a pure 
+function, only prforming its intened action and passing the output appropriately. When
+writing class to create objects it was easy to group these functionalities and no strict
+adherence to these functional principles. 
